@@ -1,0 +1,14 @@
+<div class="w-full">
+    <label>{{label}}</label>
+    <input class="w-full px-4 py-2 border-2" 
+                    [class.invalid] = "control.invalid && control.dirty && control.touched"
+                    [formControl]="control" 
+                    type={{type}} [id]="inputId" 
+                    [placeholder]="placeholder">
+    <ng-container *ngIf="control.invalid && control.dirty && control.touched">
+        <div *ngFor="let err of control.errors | keyvalue" class="text-red-400">
+            {{errorMessages[err.key]}}
+        </div>  
+    </ng-container>       
+</div>
+
