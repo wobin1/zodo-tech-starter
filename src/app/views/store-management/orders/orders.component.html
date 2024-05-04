@@ -1,0 +1,46 @@
+<div class="section-layout flex flex-col gap-4 p-4 sm:p-6 space-y-4 sm:space-y-6">
+
+
+    <div class="tables">
+        <div class="flex justify-between mb-4">
+            <div class="title flex justify-between items-center">
+                <span>Orders / Checkouts</span>
+                
+            </div>
+            <div class="flex items-center">
+                <button type="button" pButton pRipple icon="pi pi-file" (click)="dt.exportCSV()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class=" py-1  mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({ selectionOnly: true })" class="p-button-info" pTooltip="Selection Only" tooltipPosition="bottom"></button>
+            </div>
+           
+        </div>
+
+        <div class="card">
+            <p-table #dt [columns]="cols" [value]="suppliersData" selectionMode="multiple" [(selection)]="selectedProducts" [exportHeader]="'customExportHeader'" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            <span>{{ col.header }}</span>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+
+                            @if(rowData[col.field]=='taking returns'){
+                                <span class="text-green-600">{{ rowData[col.field] }}</span>
+                            }@else if(rowData[col.field]=='not taking returns'){
+                                <span class="text-red-600">{{ rowData[col.field] }}</span>
+                            }@else{
+                                <span>{{ rowData[col.field] }}</span>
+                            }
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+ 
+</div>

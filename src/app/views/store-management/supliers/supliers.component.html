@@ -1,0 +1,118 @@
+<div class="section-layout flex flex-col gap-4 p-4 sm:p-6 space-y-4 sm:space-y-6">
+
+
+    <div class="tables">
+        <div class="flex justify-between mb-4">
+            <div class="title flex justify-between items-center">
+                <span>Suppliers</span>
+                
+            </div>
+            <div class="flex items-center">
+                <button (click)="addSupplier()" type="button" pButton pRipple class="mr-2" pTooltip="CSV" label="Add Supplier" tooltipPosition="Add New Supplier" class="border bg-[#E1245E] text-gray-50 px-2 py-2 font-normal"></button>
+                <button type="button" pButton pRipple icon="pi pi-file" (click)="dt.exportCSV()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class=" py-1  mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({ selectionOnly: true })" class="p-button-info" pTooltip="Selection Only" tooltipPosition="bottom"></button>
+            </div>
+           
+        </div>
+
+        <div class="card">
+            <p-table #dt [columns]="cols" [value]="suppliersData" selectionMode="multiple" [(selection)]="selectedProducts" [exportHeader]="'customExportHeader'" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            <span>{{ col.header }}</span>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+
+                            @if(rowData[col.field]=='taking returns'){
+                                <span class="text-green-600">{{ rowData[col.field] }}</span>
+                            }@else if(rowData[col.field]=='not taking returns'){
+                                <span class="text-red-600">{{ rowData[col.field] }}</span>
+                            }@else{
+                                <span>{{ rowData[col.field] }}</span>
+                            }
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+ 
+</div>
+
+
+
+<div *ngIf="addSuplierModal" id="hs-modal-signup" class="hs-overlay bg-gray-900/25 size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto">
+    <div class="mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm">
+        <div class="p-4 sm:p-7">
+          <div class="text-center">
+            <h2 class="block text-2xl font-bold text-gray-800">Add Supplier</h2>
+           
+          </div>
+  
+          <div class="mt-5">  
+            <!-- Form -->
+            <form>
+              <div class="grid gap-4 lg:gap-6">
+                <!-- Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                  <div>
+                    <label for="hs-firstname-hire-us-2" class="block mb-2 text-sm text-gray-700 font-medium ">First Name</label>
+                    <input type="text" name="hs-firstname-hire-us-2" id="hs-firstname-hire-us-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none    ">
+                  </div>
+      
+                  <div>
+                    <label for="hs-lastname-hire-us-2" class="block mb-2 text-sm text-gray-700 font-medium ">Last Name</label>
+                    <input type="text" name="hs-lastname-hire-us-2" id="hs-lastname-hire-us-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none    ">
+                  </div>
+                </div>
+                <!-- End Grid -->
+      
+                <div>
+                  <label for="hs-work-email-hire-us-2" class="block mb-2 text-sm text-gray-700 font-medium ">Work Email</label>
+                  <input type="email" name="hs-work-email-hire-us-2" id="hs-work-email-hire-us-2" autocomplete="email" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none    ">
+                </div>
+      
+                <!-- Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                  <div>
+                    <label for="hs-company-hire-us-2" class="block mb-2 text-sm text-gray-700 font-medium ">Company</label>
+                    <input type="text" name="hs-company-hire-us-2" id="hs-company-hire-us-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none    ">
+                  </div>
+      
+                  <div>
+                    <label for="hs-company-website-hire-us-2" class="block mb-2 text-sm text-gray-700 font-medium ">Company Website</label>
+                    <input type="text" name="hs-company-website-hire-us-2" id="hs-company-website-hire-us-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none    ">
+                  </div>
+                </div>
+                <!-- End Grid -->
+      
+                <div>
+                  <label for="hs-about-hire-us-2" class="block mb-2 text-sm text-gray-700 font-medium ">Details</label>
+                  <textarea id="hs-about-hire-us-2" name="hs-about-hire-us-2" rows="4" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none    "></textarea>
+                </div>
+              </div>
+              <!-- End Grid -->
+      
+             
+              <!-- End Checkbox -->
+      
+              <div class="mt-6 grid">
+                <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-primary/85 text-white hover:bg-primary disabled:opacity-50 disabled:pointer-events-none">Add Product</button>
+              </div>
+      
+              
+            </form>
+            <!-- End Form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,126 @@
+<div class="section-layout flex flex-col gap-4 p-4 sm:p-6 space-y-4 sm:space-y-6">
+    <div class="cards flex lg:flex-row gap-6">
+        <div class="card border border-gray-100 rounded-md flex flex-col gap-4 w-full p-4 lg:min-h-[200px] bg-white shadow-md shadow-gray-100">
+            <div>
+                <div class="title text-xl font-medium">Overview</div>
+                <div class="overview mt-4 flex justify-between">
+                    <div class="flex flex-col gap-2">
+                        <span class=" text-gray-500 font-semibold">₦21,868</span>
+                        <span class="text-sm text-gray-500/80">Total Profit</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class=" text-gray-500 font-semibold">₦36,868</span>
+                        <span class="text-sm text-gray-500/80 text-[#e6704d]">Revenue</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class=" text-gray-500 font-semibold">₦45,868</span>
+                        <span class="text-sm text-gray-500/80 text-purple-500">Sales</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider border-b"></div>
+
+            <div>
+                <div class="overview flex justify-between">
+                    <div class="flex flex-col gap-2">
+                        <span class=" text-gray-500 font-semibold">₦3,421,868</span>
+                        <span class="text-sm text-gray-500/80">Net purchase value</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class=" text-gray-500 font-semibold">₦536,868</span>
+                        <span class="text-sm text-gray-500/80">Net Sales Value</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class=" text-gray-500 font-semibold">₦245,868</span>
+                        <span class="text-sm text-gray-500/80 ">MoM Profit</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class=" text-gray-500 font-semibold">₦245,868</span>
+                        <span class="text-sm text-gray-500/80 ">YoY Profit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card border border-gray-100 rounded-md flex flex-col gap-8 w-full p-4 lg:min-h-[200px] bg-white shadow-md shadow-gray-100">
+            <div>
+                <div class="title text-xl font-medium">Best Selling Product</div>
+                <div class="overview mt-4 flex flex-col ">
+                    <div class="header w-full flex py-2">
+                        <span class=" text-gray-500 text-sm font-semibold basis-1/3">Category</span>
+                        <span class=" text-gray-500 text-sm font-semibold basis-1/3">Turn Over</span>
+                        <span class=" text-gray-500 text-sm font-semibold basis-1/3">Increased By</span>
+                    </div>
+                    <div class="divider border-b"></div>
+                    <div class="body w-full flex py-2">
+                        <span class=" text-gray-500 text-sm basis-1/3">Vegetables</span>
+                        <span class=" text-gray-500 text-sm basis-1/3">₦26,000</span>
+                        <span class=" text-gray-500 text-sm basis-1/3">₦22,000</span>
+                    </div>
+
+                    <div class="body w-full flex py-2">
+                        <span class=" text-gray-500 text-sm basis-1/3">Instant Food</span>
+                        <span class=" text-gray-500 text-sm basis-1/3">₦22,000</span>
+                        <span class=" text-gray-500 text-sm basis-1/3">₦22,000</span>
+                    </div>
+
+                    <div class="body w-full flex py-2">
+                        <span class=" text-gray-500 text-sm basis-1/3">Households</span>
+                        <span class=" text-gray-500 text-sm basis-1/3">₦22,000</span>
+                        <span class=" text-gray-500 text-sm basis-1/3">₦22,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="cards flex flex-col gap-6 p-4 border border-gray-100 bg-white shadow-md shadow-gray-100 min-h-[400px]">
+        <div class="title flex justify-between w-full">
+            <span>Profit & revenue</span>
+            <span class="text-blue-500 underline cursor-pointer">See all</span>
+        </div>
+
+        <div class="card">
+            <p-chart type="line" [data]="data" [options]="options" [height]="'400px'"></p-chart>
+        </div>
+
+    </div>
+
+     <!-- tables section start -->
+  <div class="flex gap-6 flex-col lg:flex-row w-full">
+    <div class="tables w-full bg-white border shadow-sm rounded-xl">
+        <div class="title flex px-2 py-4 justify-between w-full">
+            <span>Best selling products</span>
+            <a class="text-blue-500 underline">See all</a>
+        </div>
+      <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+              <ng-container *ngFor="let row of cols">
+                <th>
+                  {{row.header}}
+                </th>
+              </ng-container>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.product }}</td>
+                <td>{{ product.productID }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.remainingQuantity }}</td>
+                <td>{{ product.turnOverQuantity }}</td>
+                <td>{{ product.salesRatio }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+    
+</div>
+<!-- tables section end -->
+
+
+ 
+</div>

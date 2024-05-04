@@ -1,6 +1,6 @@
-// @import "primeng/resources/themes/lara-light-blue/theme.css";
-// @import "primeng/resources/primeng.css";
-// @import "primeicons/primeicons.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
 
 @tailwind base;
 @tailwind components;
@@ -8,3 +8,14 @@
 
 
 @layer reset, primeng;
+
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+input {
+    border: 1px solid rgba(128, 128, 128, 0.2);
+}
