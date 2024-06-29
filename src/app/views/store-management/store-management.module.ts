@@ -9,6 +9,8 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SupliersComponent } from './supliers/supliers.component';
 import { OrdersComponent } from './orders/orders.component';
+import { SharedModule } from '../../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { OrdersComponent } from './orders/orders.component';
     CommonModule,
     StoreManagementRoutingModule,
     PrimeNGModule,
+    SharedModule,
+    HttpClientModule,
     
   ]
 })

@@ -4,6 +4,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { InputComponent } from './components/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDeleteModalComponent } from './components/confirm-delete-modal/confirm-delete-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -11,16 +13,19 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    InputComponent
+    InputComponent,
+    ConfirmDeleteModalComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports: [
     NavbarComponent,
     FooterComponent,
-    InputComponent
+    InputComponent,
+    ConfirmDeleteModalComponent
   ]
 })
 export class SharedModule { }

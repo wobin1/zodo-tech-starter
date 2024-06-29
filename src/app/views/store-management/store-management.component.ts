@@ -37,6 +37,7 @@ export class StoreManagementComponent {
    logout(){
     this.signOutConfirmation()
     console.log('signed out')
+    this.router.navigateByUrl('/login')
    }
 
 }

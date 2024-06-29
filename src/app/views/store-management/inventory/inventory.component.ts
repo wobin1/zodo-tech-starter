@@ -209,8 +209,12 @@ delete() {
         this.exportColumns = this.cols.map((col) => ({ title: col.header, dataKey: col.field }));
     }
 
-    addProduct(){
+    toggleModal(){
         this.addProductModal =!this.addProductModal;
+    }
+
+    addProduct(){
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product Added successfully' });
     }
 
     exportPdf() {

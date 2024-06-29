@@ -10,6 +10,8 @@ import { SignupComponent } from './views/signup/signup.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PrimeNGModule } from './prime-ng/prime-ng.module';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FontAwesomeModule,
     SharedModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    PrimeNGModule
   ],
   providers: [
     provideClientHydration()

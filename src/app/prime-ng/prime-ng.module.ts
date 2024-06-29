@@ -11,6 +11,7 @@ import { ChartModule } from 'primeng/chart';
 
 
 
+
 const primeNG:any = [
   TableModule,
   ButtonModule,

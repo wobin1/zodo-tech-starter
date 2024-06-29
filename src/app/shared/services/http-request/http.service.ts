@@ -6,7 +6,7 @@ import { AuthService } from '../authentication/auth.service';
 const baseUrl = {
   jwt_token: 'TP_TOKEN',
   refresh_token: 'TP_REFRESH',
-  server: 'url',
+  server: 'http://127.0.0.1:8000/',
 
   refresh: 'token/refresh/',
 

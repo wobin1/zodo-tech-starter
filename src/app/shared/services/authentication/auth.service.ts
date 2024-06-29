@@ -8,7 +8,7 @@ import { catchError, mapTo, tap } from 'rxjs/operators';
 const baseUrl = {
   jwt_token: 'VT_TOKEN',
   refresh_token: 'TP_REFRESH',
-  server: 'http://localhost:3000/',
+  server: 'http://127.0.0.1:8000/',
 
   refresh: 'token/refresh/',
 
@@ -46,15 +46,15 @@ export class AuthService {
   }
 
   register(user: any): Observable<boolean> {
-    return this.http.post<any>(this.base_url + 'api/auth/sign-up', user).pipe(
+    console.log('register service hit', this.base_url)
+    return this.http.post<any>(this.base_url + 'api/users/register/', user).pipe(
       tap((tokens: any) => {
-        // this.storeTokens({ token: tokens?.data?.token });
+        this.storeTokens({ token: tokens?.data?.token });
         console.log(tokens);
         
       }),
-      mapTo(true),
       catchError((error: any) => {
-        return of(false);
+        return of(error);
       })
     );
   }
